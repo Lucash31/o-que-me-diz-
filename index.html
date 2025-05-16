@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤫 Só você sabe...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff9a9e);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+             overflow-x: hidden;  /* Mantém apenas overflow-x escondido */
+             overflow-y: auto;   /* Permite rolagem vertical */
+            color: #000000;
+            text-align: center;
+            padding: 50px;
+            box-sizing: border-box;  /* Garante que o padding não some à altura */
+        }
+        img {
+            width: 200px;
+            border-radius: 50%;
+            margin: 20px;
+        }
+        button {
+            background: #ff6b6b;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        p {
+            text-align: start;
+            color: #000000;
+        }
+        #sim {
+            background-color: #ff6b6b;
+            color: white;
+        }
+        
+        #nao {
+            background-color: #ff6b6b;
+            color: #fff;
+            position: absolute;
+        }
+        
+        #mensagem {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff6b6b;
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+<script>
+// Cria corações flutuantes
+        function createHearts() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = Math.random() * 100 + "vh";
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+setInterval(createHearts, 300);
+</script>
+
+    <div id="pagina1"> 
+
+     <h1>Você por aqui?</h1>
+    
+    <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/4922844-homem-e-mulher-casal-apaixonado-arte-linha-retrato-de-mulher-e-homem-abracando-no-fundo-branco-com-formas-abstratas-e-linhas-pastel-quentes-organicas-cores-moderno-ilustracao-linha-de-contorno-vetor.jpg" alt="Nosso momento">
+
+    <h2>Espero que goste!</h2>
+
+    <p>Quando te conheci…
+Eu nem imaginava que aquela troca de olhares, aquele sorriso ou até aquela conversa meio tímida, fosse virar algo tão especial pra mim. Aos poucos, você foi se tornando uma parte dos meus dias, dos meus pensamentos… e agora, eu não consigo mais imaginar tudo isso sem você.
+
+Estar ao seu lado me faz bem de um jeito que é difícil colocar em palavras. <br> Você me faz querer ser alguém melhor, alguém que sonha com um futuro a dois — e até em outras vidas, se a gente tiver essa chance.
+
+Se eu tivesse uma caneta aonde tivesse uma caneta aonde descrevo a minha história, você estaria em todas as páginas.
+
+Estaria nos capítulos mais felizes, nos momentos de virada, nos dias comuns que, com você, viram poesia.
+
+<br> Cada parágrafo falaria do brilho do seu olhar, do som da sua risada, do jeito que seu abraço parece traduzir o que é paz.
+
+<strong>E se essa história não tivesse fim — e eu espero que não tenha</strong> — você seria a razão pela qual eu escreveria até a última palavra, sonhando com todas as próximas.
+
+<br> Então... que tal escrevermos esse livro juntos? Prometo te cuidar com carinho, com respeito e com leveza. Porque tudo que eu mais quero é viver essa história contigo, um dia de cada vez.
+
+Não quero apressar nada (que ja ta atrasado), mas também não quero deixar passar o que estamos vivendo. Por isso, queria te perguntar algo simples, mas muito importante pra mim.
+
+<br> Com carinho (e um coração batendo forte).
+
+<br> Agora só falta uma coisa pra tudo isso fazer sentido:
+
+</p>
+
+  <button onclick="mostrarSegundaPagina()">Quer ver o que eu escondi aqui?</button>
+
+</div>
+
+<div id="pagina2" style="display:none;">
+  <!-- seu pedido final aqui -->
+  <h1>Quer namorar comigo? 💖</h1>
+    
+    <button id="sim" class="btn">Sim! 💘</button>
+    <button id="nao" class="btn">Não</button>
+    
+    <div id="mensagem"></div>
+    
+    <script>
+            const btnSim = document.getElementById("sim");
+            const btnNao = document.getElementById("nao");
+            const mensagem = document.getElementById("mensagem");
+
+            let intervaloFuga;
+
+            // Função para mover o botão "Não"
+            function moverBotao() {
+                const randomX = Math.random() * (window.innerWidth - btnNao.offsetWidth);
+                const randomY = Math.random() * (window.innerHeight - btnNao.offsetHeight);
+                btnNao.style.left = randomX + "px";
+                btnNao.style.top = randomY + "px";
+            }
+
+            // Começa a mover o botão assim que a página é exibida
+            function iniciarFuga() {
+                mensagem.textContent = "Só a uma opção! rsrs😜";
+                intervaloFuga = setInterval(moverBotao, 500); // Move a cada 500ms
+                
+                // Mover imediatamente para primeira posição
+                moverBotao();
+            }
+
+            // Eventos para o botão "Não" (opcional - pode remover se quiser)
+            btnNao.addEventListener("click", () => {
+                mensagem.textContent = "Haha, é difícil né? 😝";
+            });
+            
+            btnNao.addEventListener("touchstart", () => {
+                mensagem.textContent = "Haha, é difícil né? 😝";
+            });
+
+            // Ação do botão "Sim"
+            btnSim.addEventListener("click", () => {
+                mensagem.innerHTML = "❤️ Você acabou de me deixar o homem mais feliz do mundo! ❤️ ";
+                btnNao.style.display = "none";
+                clearInterval(intervaloFuga);
+                document.body.style.background = "linear-gradient(45deg, #ff6b6b, #ff8e8e)";
+            });
+
+            // Inicia a fuga quando a página 2 é carregada
+            iniciarFuga();
+        </script>
+    </div>
+
+    <script>
+        function mostrarSegundaPagina() {
+            document.getElementById("pagina1").style.display = "none";
+            document.getElementById("pagina2").style.display = "block";
+            
+            // Se quiser garantir que a fuga comece após a transição
+            setTimeout(() => {
+                // Já está sendo iniciado pelo script da página 2
+            }, 100);
+        }
+    </script>
+</body>
+</html>
